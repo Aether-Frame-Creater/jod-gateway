@@ -31,8 +31,8 @@ class ProviderAdapter(ABC):
     async def chat(self, req: ChatRequest, session=None) -> AsyncIterator[ChatChunk]:
         raise NotImplementedError
 
-    async def validate_session(self, session) -> bool:
-        return True
+    async def validate_session(self, session) -> tuple[bool, dict | None, str | None]:
+        return (True, {}, None)
 
     async def refresh_session(self, session):
         return session

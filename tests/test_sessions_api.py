@@ -31,7 +31,7 @@ def client(tmp_path):
 
 def _ingest_payload():
     return {
-        "provider": "chatgpt",
+        "provider": "echo",
         "label": "smoke-test",
         "cookies": [
             {"name": "__Secure-next-auth.session-token.0", "value": "secret-cookie-value", "domain": ".chatgpt.com"},
@@ -46,7 +46,7 @@ def test_ingest(client) -> None:
     assert resp.status_code == 200
     body = resp.json()
     assert body["id"]
-    assert body["provider"] == "chatgpt"
+    assert body["provider"] == "echo"
     assert body["healthy"] is True
     assert body["cookie_count"] == 2
 

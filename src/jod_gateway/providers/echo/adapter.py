@@ -33,5 +33,5 @@ class EchoAdapter(ProviderAdapter):
             yield ChatChunk(delta=text[i : i + step])
         yield ChatChunk(finish_reason="stop")
 
-    async def validate_session(self, session) -> bool:
-        return True
+    async def validate_session(self, session) -> tuple[bool, dict | None, str | None]:
+        return (True, {}, None)
